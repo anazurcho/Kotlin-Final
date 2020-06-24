@@ -5,57 +5,42 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalproject.Company
-import com.example.finalproject.CompanyAdapter
+import com.example.finalproject.dto.Company
 import com.example.finalproject.R
+import com.example.finalproject.adapters.ViewPagerFragmentAdapter
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.createCompany
-import kotlinx.android.synthetic.main.activity_settings.*
 
 
 class MainActivity  : AppCompatActivity(){
 
+    private lateinit var viewPagerFragmentAdapter: ViewPagerFragmentAdapter
+
 
     private val auth = FirebaseAuth.getInstance()
-    private val listOfCompanies: ArrayList<Company> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        companyRecycler.layoutManager = LinearLayoutManager(this)
+        viewPagerFragmentAdapter = ViewPagerFragmentAdapter(this)
 
+        viewpager.adapter = viewPagerFragmentAdapter
 
-        createCompany.setOnClickListener {
-            startActivity(Intent(this, CompanyFormActivity::class.java))
-        }
+        TabLayoutMediator(tabLayout, viewpager) { tab, position ->
+            tab.text = "Object ${(position + 1)}"
+            when (position) {
+                0 -> {
+                    tab.text = "Companies"
+                    tab.setIcon(R.drawable.ic_remove_red_eye_black_24dp)
+                }
+                1 -> {
+                    tab.setIcon(R.drawable.ic_rowing_black_24dp)
 
-
-        val database = FirebaseDatabase.getInstance().getReference("companies")
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (companyInstance in snapshot.children.reversed()) {
-                        val company = companyInstance.getValue(Company::class.java)
-                        if (company != null) {
-                            listOfCompanies.add(company)
-                        }
-                    }
-                    val adapter = CompanyAdapter(listOfCompanies)
-                    companyRecycler.adapter = adapter
                 }
             }
+        }.attach()
 
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
