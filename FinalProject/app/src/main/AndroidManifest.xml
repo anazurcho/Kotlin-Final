@@ -18,6 +18,7 @@
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.ResetPasswordActivity" />
         <activity android:name=".activities.CompanyFormActivity" />
+        <activity android:name=".activities.ChangeInfoActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -31,7 +31,6 @@ class CompanyFormActivity : AppCompatActivity() {
         }
         companyLogo.setOnClickListener {
             chooseImageClicked(it)
-
         }
     }
 
@@ -64,9 +63,11 @@ class CompanyFormActivity : AppCompatActivity() {
                     downloadUrl = it.result.toString()
                     val database = FirebaseDatabase.getInstance().reference
                     val companyMap: Map<String, String> =
-                        mapOf("titleCompany" to titleCompany,
+                        mapOf(
+                            "titleCompany" to titleCompany,
                             "imageURL" to downloadUrl,
-                            "infoCompany" to infoCompany)
+                            "infoCompany" to infoCompany
+                        )
                     database.child("companies").child(companyId).setValue(companyMap)
                 }
 
@@ -101,10 +102,7 @@ class CompanyFormActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1) {
             if (grantResults.size > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -112,7 +110,6 @@ class CompanyFormActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
 }
