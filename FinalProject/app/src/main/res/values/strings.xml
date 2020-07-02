@@ -14,4 +14,7 @@
     <string name="photo">photo</string>
     <string name="e_mail">E-Mail</string>
     <string name="change_password">Change Password</string>
+    <string name="todo">TODO</string>
+    <string name="anda">AnDa</string>
+    <string name="current_user">Current User</string>
 </resources>

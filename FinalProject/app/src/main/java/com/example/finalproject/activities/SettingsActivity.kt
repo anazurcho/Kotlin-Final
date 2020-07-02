@@ -9,11 +9,8 @@ import com.example.finalproject.dto.UserInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_info.*
-import kotlinx.android.synthetic.main.activity_settings.*
-import kotlinx.android.synthetic.main.activity_settings.view.*
-import kotlinx.android.synthetic.main.company_item.view.*
-import kotlinx.android.synthetic.main.activity_info.nameTextView as nameTextView1
+import kotlinx.android.synthetic.main.activity_settings_user.*
+
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var db: DatabaseReference
@@ -21,7 +18,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        setContentView(R.layout.activity_settings_user)
         this.init()
         Log.d("MyData", auth.currentUser?.uid!!)
         this.buttons()
@@ -41,6 +38,9 @@ class SettingsActivity : AppCompatActivity() {
             override fun onDataChange(data: DataSnapshot) {
                 val userInfo = data.getValue(UserInfo::class.java) ?: return
                 nameTextView.text = userInfo.name
+                ageTextView.text = userInfo.age
+                descriptionTextView.text = userInfo.details
+                userPhoneTextView.text = userInfo.phone
                 Picasso.get().load(userInfo.imageURL).into(imageURL)
             }
         })
@@ -57,6 +57,10 @@ class SettingsActivity : AppCompatActivity() {
         }
         changeInfoBtn.setOnClickListener {
             startActivity(Intent(this, ChangeInfoActivity::class.java))
+        }
+        goBack.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 

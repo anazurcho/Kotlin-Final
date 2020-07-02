@@ -1,6 +1,5 @@
 package com.example.finalproject.activities
 
-
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
@@ -19,8 +18,10 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_info.*
-import kotlinx.android.synthetic.main.company_create_form.*
-import kotlinx.android.synthetic.main.company_item.view.*
+import kotlinx.android.synthetic.main.activity_info.goBack
+import kotlinx.android.synthetic.main.activity_info.view.*
+import kotlinx.android.synthetic.main.activity_settings_user.*
+
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -35,8 +36,22 @@ class ChangeInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_info)
 
         this.init()
+        this.buttons()
+    }
+
+    private fun init() {
+
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseDatabase.getInstance().getReference("UserInfo")
+
+    }
+    private fun buttons(){
         imageURLBtn.setOnClickListener {
             chooseImageClicked(it)
+        }
+        goBack.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+            finish()
         }
         saveBtn.setOnClickListener {
 
@@ -73,46 +88,11 @@ class ChangeInfoActivity : AppCompatActivity() {
                             )
                         db.child(auth.currentUser?.uid!!).setValue(userInfoMap)
                     }
-
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, SettingsActivity::class.java))
+                finish()
             }
-
-//            val userInfo = UserInfo(name, phone, age, details)
-
-//            db.child(auth.currentUser?.uid!!).setValue(userInfo)
-
         }
-
-    }
-
-    private fun init() {
-
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseDatabase.getInstance().getReference("UserInfo")
-
-        this.userInfoChangeListener()
-
-    }
-
-    private fun userInfoChangeListener() {
-
-        db.child(auth.currentUser?.uid!!).addValueEventListener(object : ValueEventListener {
-
-            override fun onCancelled(p0: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onDataChange(data: DataSnapshot) {
-
-                val userInfo = data.getValue(UserInfo::class.java) ?: return
-
-                phoneTextView.text = userInfo.phone
-                nameTextView.text = userInfo.name
-                detailsTextView.text = userInfo.details
-                ageTextView.text = userInfo.age
-            }
-
-        })
 
     }
 
