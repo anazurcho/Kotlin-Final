@@ -27,7 +27,7 @@
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/titleCompany"
+        android:id="@+id/titlePost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageURL" />
 
     <TextView
-        android:id="@+id/infoCompany"
+        android:id="@+id/infoPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"

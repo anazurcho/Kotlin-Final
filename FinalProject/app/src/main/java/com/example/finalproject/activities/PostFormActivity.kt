@@ -7,7 +7,7 @@ import android.provider.MediaStore
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject.R
-import kotlinx.android.synthetic.main.company_create_form.*
+import kotlinx.android.synthetic.main.post_create_form.*
 import android.Manifest
 import android.app.Activity
 import android.graphics.Bitmap
@@ -18,18 +18,18 @@ import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class CompanyFormActivity : AppCompatActivity() {
+class PostFormActivity : AppCompatActivity() {
     private val imageId = UUID.randomUUID().toString() + ".jpg"
-    private val companyId = UUID.randomUUID().toString()
+    private val postId = UUID.randomUUID().toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.company_create_form)
+        setContentView(R.layout.post_create_form)
 
-        createCompany.setOnClickListener {
-            companyCreateFun(it)
+        createPost.setOnClickListener {
+            postCreateFun(it)
         }
-        companyLogo.setOnClickListener {
+        postLogo.setOnClickListener {
             chooseImageClicked(it)
         }
     }
@@ -39,13 +39,13 @@ class CompanyFormActivity : AppCompatActivity() {
         startActivityForResult(intent, 1)
     }
 
-    private fun companyCreateFun(view: View) {
-        val titleCompany = companyTitle.text.toString()
-        val infoCompany = companyInfo.text.toString()
+    private fun postCreateFun(view: View) {
+        val titlePost = postTitle.text.toString()
+        val infoPost = postInfo.text.toString()
 
-        companyLogo.isDrawingCacheEnabled = true
-        companyLogo.buildDrawingCache()
-        val bitmap = (companyLogo.drawable as BitmapDrawable).bitmap
+        postLogo.isDrawingCacheEnabled = true
+        postLogo.buildDrawingCache()
+        val bitmap = (postLogo.drawable as BitmapDrawable).bitmap
         val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val data = baos.toByteArray()
@@ -62,13 +62,13 @@ class CompanyFormActivity : AppCompatActivity() {
                 .reference.child("images/$imageId").downloadUrl.addOnCompleteListener {
                     downloadUrl = it.result.toString()
                     val database = FirebaseDatabase.getInstance().reference
-                    val companyMap: Map<String, String> =
+                    val postMap: Map<String, String> =
                         mapOf(
-                            "titleCompany" to titleCompany,
+                            "titlePost" to titlePost,
                             "imageURL" to downloadUrl,
-                            "infoCompany" to infoCompany
+                            "infoPost" to infoPost
                         )
-                    database.child("companies").child(companyId).setValue(companyMap)
+                    database.child("posts").child(postId).setValue(postMap)
                 }
 
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
@@ -94,7 +94,7 @@ class CompanyFormActivity : AppCompatActivity() {
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             try {
                 val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, selectedImage)
-                companyLogo.setImageBitmap(bitmap)
+                postLogo.setImageBitmap(bitmap)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

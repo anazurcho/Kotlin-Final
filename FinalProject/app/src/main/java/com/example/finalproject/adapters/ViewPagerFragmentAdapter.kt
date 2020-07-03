@@ -13,9 +13,9 @@ class ViewPagerFragmentAdapter(activity: AppCompatActivity) : FragmentStateAdapt
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> CompaniesFragment()
+            0 -> PostsFragment()
             1 -> SecondFragment()
-            else -> CompaniesFragment()
+            else -> PostsFragment()
         }
     }
 

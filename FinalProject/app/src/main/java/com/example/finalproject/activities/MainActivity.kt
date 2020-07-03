@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.finalproject.dto.Company
+import com.example.finalproject.dto.Post
 import com.example.finalproject.R
 import com.example.finalproject.adapters.ViewPagerFragmentAdapter
 import com.google.firebase.auth.FirebaseAuth
@@ -31,7 +31,7 @@ class MainActivity  : AppCompatActivity(){
             tab.text = "Object ${(position + 1)}"
             when (position) {
                 0 -> {
-                    tab.text = "Companies"
+                    tab.text = "Posts"
                     tab.setIcon(R.drawable.ic_remove_red_eye_black_24dp)
                 }
                 1 -> {

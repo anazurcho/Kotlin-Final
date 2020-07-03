@@ -18,12 +18,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/Companies"
+            android:id="@+id/Posts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Companies"
+            android:text="Posts"
             android:textColor="#D6DBDF"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/companyRecycler"
@@ -32,26 +32,26 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="20sp"/>
         <Button
-            android:id="@+id/createCompany"
+            android:id="@+id/createPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="createCompany"
+            android:text="Create Post"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_margin="20sp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/companyRecycler"
+            android:id="@+id/postRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:background="@drawable/gradient_background"
-            app:layout_constraintBottom_toTopOf="@+id/createCompany"
+            app:layout_constraintBottom_toTopOf="@+id/createPost"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Companies"
+            app:layout_constraintTop_toBottomOf="@+id/Posts"
             >
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
