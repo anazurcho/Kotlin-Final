@@ -3,6 +3,7 @@ package com.example.finalproject.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,13 +19,12 @@ import kotlinx.android.synthetic.main.activity_posts.*
 
 class PostsFragment : Fragment(R.layout.activity_posts) {
 
-    private val listOfPosts: ArrayList<Post> = ArrayList()
+    private lateinit var adapter: PostAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        postRecycler.layoutManager = LinearLayoutManager(context)
-
+        initView()
 
         createPost.setOnClickListener {
             startActivity(Intent(context, PostFormActivity::class.java))
@@ -39,21 +39,25 @@ class PostsFragment : Fragment(R.layout.activity_posts) {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    var posts: ArrayList<Post> = ArrayList()
                     for (postInstance in snapshot.children.reversed()) {
                         val post = postInstance.getValue(Post::class.java)
                         if (post != null) {
-                            listOfPosts.add(post)
+                            posts.add(post)
                         }
                     }
-                    val adapter =
-                        PostAdapter(
-                            listOfPosts
-                        )
-                    postRecycler.adapter = adapter
+                    adapter.updatePosts(posts)
                 }
             }
 
         })
     }
+
+    private fun initView() {
+        adapter = PostAdapter(ArrayList<Post>())
+        postRecycler.layoutManager = LinearLayoutManager(context)
+        postRecycler.adapter = adapter
+    }
+
 
 }

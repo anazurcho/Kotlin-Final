@@ -44,11 +44,11 @@
             android:backgroundTint="#D3E1ED"
             android:drawableStart="@drawable/ic_action_mail"
             android:ems="10"
-            android:hint="@string/sign_in_with_email"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:textColor="#D6DBDF"
             android:textColorHighlight="#D6DBDF"
-            android:textColorHint="#D6DBDF"/>
+            android:textColorHint="#D6DBDF" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
@@ -59,19 +59,20 @@
             android:backgroundTint="#D3E1ED"
             android:drawableStart="@drawable/ic_action_passw"
             android:ems="10"
-            android:hint="@string/password"
+            android:hint="Password"
             android:inputType="textPassword"
             android:textColor="#D6DBDF"
             android:textColorHighlight="#D6DBDF"
             android:textColorHint="#D6DBDF" />
+
         <Button
             android:id="@+id/signInBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:backgroundTint="#D6DBDF"
-            android:text="@string/sign_in"
-            android:textColor="#223748"
-            android:layout_marginTop="50dp"/>
+            android:text="Sign In"
+            android:textColor="#223748" />
 
         <TextView
             android:id="@+id/signUpBtn"
@@ -79,35 +80,36 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif"
-            android:text="@string/don_t_have_an_account_sign_up"
+            android:text="Don't have an account? Sign Up"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:textColor="#D6DBDF"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/resetPasswordBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/forgot_password"
             android:layout_marginTop="20dp"
+            android:text="Forgot Password?"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:textColor="#D6DBDF"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             android:id="@+id/tryVisitor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/try_visitor_status"
             android:layout_marginTop="20dp"
+            android:text="Try Visitor Status (Coming Soon)"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:textColor="#D6DBDF"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 

@@ -5,5 +5,5 @@ data class UserInfo (
     val phone: String?="",
     val imageURL: String?=null,
     val details: String?="",
-    val age:String?="0"
+    val age:Int?=0
 )

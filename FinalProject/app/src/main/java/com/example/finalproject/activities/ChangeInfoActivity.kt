@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.finalproject.R
@@ -37,10 +38,22 @@ class ChangeInfoActivity : AppCompatActivity() {
 
         this.init()
         this.buttons()
+
+        val name = this.intent.extras?.getString("name")
+        val age = this.intent.extras?.getString("age")
+        val bio = this.intent.extras?.getString("description")
+        val phone = this.intent.extras?.getString("phone")
+        val imgUrl = this.intent.extras?.getString("imgUrl")
+
+        editTextPersonName.setText(name)
+        editTextAge.setText(age)
+        editTextPhone.setText(phone)
+        editTextDetails.setText(bio)
+        Log.d("IMGURL", imgUrl.toString())
+        Picasso.get().load(imgUrl).into(imageURLBtn)
     }
 
     private fun init() {
-
         auth = FirebaseAuth.getInstance()
         db = FirebaseDatabase.getInstance().getReference("UserInfo")
 
@@ -58,7 +71,7 @@ class ChangeInfoActivity : AppCompatActivity() {
             val name = editTextPersonName.text.toString()
             val phone = editTextPhone.text.toString()
             val details = editTextDetails.text.toString()
-            val age = editTextAge.text.toString()
+            val age = editTextAge.text.toString().toInt()
 
             imageURLBtn.isDrawingCacheEnabled = true
             imageURLBtn.buildDrawingCache()
@@ -78,7 +91,7 @@ class ChangeInfoActivity : AppCompatActivity() {
                 FirebaseStorage.getInstance()
                     .reference.child("images/$imageId").downloadUrl.addOnCompleteListener {
                         downloadUrl = it.result.toString()
-                        val userInfoMap: Map<String, String> =
+                        val userInfoMap: Map<String, Any> =
                             mapOf(
                                 "name" to name,
                                 "imageURL" to downloadUrl,
@@ -112,7 +125,7 @@ class ChangeInfoActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        val selectedImage = data!!.data
+        val selectedImage = data?.data
 
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             try {

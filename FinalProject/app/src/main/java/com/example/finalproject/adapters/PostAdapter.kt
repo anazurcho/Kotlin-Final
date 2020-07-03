@@ -17,7 +17,6 @@ class PostAdapter(private var posts: ArrayList<Post> )
         fun bind(post: Post) {
             itemView.titlePost.text = post.titlePost
             itemView.infoPost.text = post.infoPost
-            Picasso.get().load(post.imageURL).into(itemView.imageURL)
         }
     }
 
@@ -34,4 +33,8 @@ class PostAdapter(private var posts: ArrayList<Post> )
         holder.bind(posts[position])
     }
 
+    fun updatePosts(posts: ArrayList<Post>) {
+        this.posts = posts
+        notifyDataSetChanged()
+    }
 }

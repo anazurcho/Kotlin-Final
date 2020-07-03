@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/gradient_background"
     tools:context=".activities.MainActivity">
 
 
@@ -17,36 +16,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/Posts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="Posts"
-            android:textColor="#D6DBDF"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/companyRecycler"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="20sp"/>
         <Button
             android:id="@+id/createPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Post"
+            android:layout_margin="20sp"
+            android:text="Add Post"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="20sp"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/postRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:background="@drawable/gradient_background"
             app:layout_constraintBottom_toTopOf="@+id/createPost"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -54,6 +38,12 @@
             app:layout_constraintTop_toBottomOf="@+id/Posts"
             >
         </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
 
