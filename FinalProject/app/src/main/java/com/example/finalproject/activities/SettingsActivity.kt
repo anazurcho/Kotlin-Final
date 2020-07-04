@@ -3,14 +3,12 @@ package com.example.finalproject.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.finalproject.R
 import com.example.finalproject.dto.UserInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_settings_user.*
-import kotlinx.android.synthetic.main.activity_settings_user.view.*
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -22,7 +20,6 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings_user)
         this.init()
-        Log.d("MyData", auth.currentUser?.uid!!)
         this.buttons()
     }
     private fun init() {
@@ -53,7 +50,6 @@ class SettingsActivity : AppCompatActivity() {
         signOutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
         changePasswordBtn.setOnClickListener {
             startActivity(Intent(this, ChangePasswordActivity::class.java))
@@ -71,7 +67,6 @@ class SettingsActivity : AppCompatActivity() {
         }
         goBack.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
-            finish()
         }
     }
 

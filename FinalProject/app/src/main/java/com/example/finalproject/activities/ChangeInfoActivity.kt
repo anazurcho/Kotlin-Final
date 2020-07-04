@@ -9,19 +9,15 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.finalproject.R
-import com.example.finalproject.dto.UserInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_info.*
 import kotlinx.android.synthetic.main.activity_info.goBack
-import kotlinx.android.synthetic.main.activity_info.view.*
-import kotlinx.android.synthetic.main.activity_settings_user.*
 
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -49,7 +45,6 @@ class ChangeInfoActivity : AppCompatActivity() {
         editTextAge.setText(age)
         editTextPhone.setText(phone)
         editTextDetails.setText(bio)
-        Log.d("IMGURL", imgUrl.toString())
         Picasso.get().load(imgUrl).into(imageURLBtn)
     }
 
@@ -64,7 +59,6 @@ class ChangeInfoActivity : AppCompatActivity() {
         }
         goBack.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
-            finish()
         }
         saveBtn.setOnClickListener {
 

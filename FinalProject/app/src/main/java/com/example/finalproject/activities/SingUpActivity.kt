@@ -40,6 +40,7 @@ class SingUpActivity : AppCompatActivity() {
         }
         backBtn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
 
     }

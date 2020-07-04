@@ -47,6 +47,9 @@ class LoginActivity : AppCompatActivity() {
         resetPasswordBtn.setOnClickListener {
             startActivity(Intent(this, ResetPasswordActivity::class.java))
         }
+        tryVisitor.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
     }
 }

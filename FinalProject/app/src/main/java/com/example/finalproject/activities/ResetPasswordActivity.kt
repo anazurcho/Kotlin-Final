@@ -1,6 +1,5 @@
 package com.example.finalproject.activities
 
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,6 +28,7 @@ class ResetPasswordActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this, LoginActivity::class.java))
+                            finish()
                         } else {
                             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                         }
@@ -38,6 +38,7 @@ class ResetPasswordActivity : AppCompatActivity() {
         }
         backBtn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 }

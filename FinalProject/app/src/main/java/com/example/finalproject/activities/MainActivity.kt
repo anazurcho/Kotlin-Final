@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.finalproject.dto.Post
 import com.example.finalproject.R
 import com.example.finalproject.adapters.ViewPagerFragmentAdapter
 import com.google.firebase.auth.FirebaseAuth
@@ -13,11 +12,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity  : AppCompatActivity(){
-
+class MainActivity : AppCompatActivity() {
     private lateinit var viewPagerFragmentAdapter: ViewPagerFragmentAdapter
-
-
     private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,9 +49,12 @@ class MainActivity  : AppCompatActivity(){
         if (item.itemId == R.id.logout) {
             auth.signOut()
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         } else if (item.itemId == R.id.settings) {
-            startActivity(Intent(this, SettingsActivity::class.java))
+            if (auth.currentUser == null) {
+                startActivity(Intent(this, LoginActivity::class.java))
+            } else {
+                startActivity(Intent(this, SettingsActivity::class.java))
+            }
         }
         return super.onOptionsItemSelected(item)
     }

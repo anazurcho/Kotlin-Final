@@ -39,6 +39,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         }
         backBtn.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
+            finish()
         }
 
     }
