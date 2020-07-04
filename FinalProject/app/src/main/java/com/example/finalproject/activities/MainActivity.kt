@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
                     tab.setIcon(R.drawable.ic_remove_red_eye_black_24dp)
                 }
                 1 -> {
-                    tab.setIcon(R.drawable.ic_rowing_black_24dp)
-
+                    tab.text = "My Posts"
+                    tab.setIcon(R.drawable.ic_baseline_account_circle_24)
                 }
             }
         }.attach()

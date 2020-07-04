@@ -16,8 +16,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_posts.*
+import kotlinx.android.synthetic.main.activity_settings_user.*
 
-class PostsFragment : Fragment(R.layout.activity_posts) {
+class MyPostsFragment : Fragment(R.layout.activity_posts) {
     private lateinit var adapter: PostAdapter
     private lateinit var auth: FirebaseAuth
 
@@ -31,7 +32,7 @@ class PostsFragment : Fragment(R.layout.activity_posts) {
             startActivity(Intent(context, PostFormActivity::class.java))
         }
 
-        if(auth.currentUser == null) {
+        if (auth.currentUser == null) {
             createPost.visibility = View.GONE
         }
 
@@ -46,7 +47,7 @@ class PostsFragment : Fragment(R.layout.activity_posts) {
                     var posts: ArrayList<Post> = ArrayList()
                     for (postInstance in snapshot.children.reversed()) {
                         val post = postInstance.getValue(Post::class.java)
-                        if (post != null) {
+                        if (post != null && post.uid == auth.currentUser?.uid) {
                             posts.add(post)
                         }
                     }
