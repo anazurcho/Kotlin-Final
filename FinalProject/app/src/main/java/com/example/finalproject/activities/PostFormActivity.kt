@@ -9,9 +9,11 @@ import kotlinx.android.synthetic.main.post_create_form.*
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import java.util.*
 
 class PostFormActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    private val idPost = UUID.randomUUID().toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class PostFormActivity : AppCompatActivity() {
             mapOf(
                 "titlePost" to titlePost,
                 "infoPost" to infoPost,
+                "idPost" to idPost,
                 "uid" to auth.currentUser!!.uid
             )
         database.child("posts").push().setValue(postMap)
