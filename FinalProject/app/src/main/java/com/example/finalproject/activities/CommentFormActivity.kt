@@ -45,7 +45,7 @@ class CommentFormActivity : AppCompatActivity() {
         database.child("comments").push().setValue(postMap)
 
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-//        startActivity(Intent(this, MainActivity::class.java))
+//        startActivity(Intent(this, PostFullActivity::class.java))
         finish()
     }
 

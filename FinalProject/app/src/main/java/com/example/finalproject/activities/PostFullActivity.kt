@@ -43,7 +43,6 @@ class PostFullActivity() : AppCompatActivity()  {
             val intent = Intent(this, CommentFormActivity::class.java)
             intent.putExtra("idPost", idPost)
             startActivity(intent)
-            finish()
         }
     }
 
