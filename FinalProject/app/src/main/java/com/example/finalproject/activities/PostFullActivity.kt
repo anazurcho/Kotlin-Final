@@ -37,6 +37,7 @@ class PostFullActivity() : AppCompatActivity()  {
 
         goBack.setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
         createComment.setOnClickListener {

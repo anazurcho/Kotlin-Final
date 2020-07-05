@@ -30,6 +30,7 @@ class CommentFormActivity : AppCompatActivity() {
 
         goBack.setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
     private fun commentCreateFun(view: View) {
