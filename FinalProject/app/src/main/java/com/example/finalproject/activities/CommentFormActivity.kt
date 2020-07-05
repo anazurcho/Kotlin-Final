@@ -16,8 +16,6 @@ class CommentFormActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var idPost by Delegates.notNull<String>()
 
-    private lateinit var db: DatabaseReference
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.comment_create_form)
@@ -37,16 +35,14 @@ class CommentFormActivity : AppCompatActivity() {
         val comment = comment.text.toString()
 
         val database = FirebaseDatabase.getInstance().reference
-        val postMap: Map<String, String> =
+        val commentMap: Map<String, String> =
             mapOf(
                 "comment" to comment,
-                "idPost" to idPost,
-                "idUser" to auth.currentUser!!.uid
+                "idPost" to idPost
             )
-        database.child("comments").push().setValue(postMap)
+        database.child("comments").push().setValue(commentMap)
 
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-//        startActivity(Intent(this, PostFullActivity::class.java))
         finish()
     }
 

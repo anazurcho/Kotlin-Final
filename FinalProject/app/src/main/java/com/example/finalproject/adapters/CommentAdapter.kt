@@ -19,10 +19,7 @@ class CommentAdapter(private var comments: ArrayList<Comment> )
 
         fun bind(comment: Comment) {
             itemView.comment.text = comment.comment
-//            itemView.idUser.text = comment.idUser
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
