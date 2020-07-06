@@ -10,7 +10,6 @@ import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_settings_user.*
 
-
 class SettingsActivity : AppCompatActivity() {
     private lateinit var db: DatabaseReference
     private lateinit var auth: FirebaseAuth

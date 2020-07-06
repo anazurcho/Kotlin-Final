@@ -1,6 +1,5 @@
 package com.example.finalproject.fragments
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -31,7 +30,7 @@ class PostsFragment : Fragment(R.layout.activity_posts) {
             startActivity(Intent(context, PostFormActivity::class.java))
         }
 
-        if(auth.currentUser == null) {
+        if (auth.currentUser == null) {
             createPost.visibility = View.GONE
         }
 

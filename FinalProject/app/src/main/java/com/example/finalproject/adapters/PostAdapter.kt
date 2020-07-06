@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
 import com.example.finalproject.activities.PostFullActivity
 import com.example.finalproject.dto.Post
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.post_item.view.*
 
 class PostAdapter(private var posts: ArrayList<Post> )

@@ -1,14 +1,11 @@
 package com.example.finalproject.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.R
 import com.example.finalproject.dto.Comment
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.comment_item.view.*
 
 class CommentAdapter(private var comments: ArrayList<Comment> )

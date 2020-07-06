@@ -1,6 +1,5 @@
 package com.example.finalproject.dto
 
-
 data class Post (
     val idPost:String?=null,
     val uid:String?=null,

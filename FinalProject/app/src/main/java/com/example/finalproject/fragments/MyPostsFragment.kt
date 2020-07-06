@@ -1,6 +1,5 @@
 package com.example.finalproject.fragments
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -16,7 +15,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_posts.*
-import kotlinx.android.synthetic.main.activity_settings_user.*
 
 class MyPostsFragment : Fragment(R.layout.activity_posts) {
     private lateinit var adapter: PostAdapter
